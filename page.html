@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- 修改标题 -->
+<title>Global Sourcing Pro | Профессиональные закупочные услуги</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', sans-serif;
+        }
+
+        body {
+            background: #f8f9fa;
+            color: #2c3e50;
+        }
+
+        .header {
+            background: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.3)),
+                url('./1.png') center/cover;
+            color: white;
+            padding: 2rem 1rem;
+            text-align: center;
+        }
+
+        .service-card {
+            background: white;
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin: 1rem;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            /* 新增flex布局 */
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+        }
+
+        .icon {
+            width: 66px;
+            height: 66px;
+            /* 移除原有下边距 */
+            margin-bottom: 0;
+            /* 防止图片变形 */
+            flex-shrink: 0;
+        }
+
+        .contact-badge {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            background: white;
+            padding: 1rem;
+            border-radius: 8px;
+            margin: 1rem;
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .cta-button {
+            background: #3498db;
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: 25px;
+            display: block;
+            width: fit-content;
+            margin: 9rem auto .5rem;
+            text-decoration: none;
+        }
+        .service-card div{
+            line-height: 28px;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 头部区域 -->
+<header class="header">
+    <h1>Global Sourcing Pro</h1>
+    <a href="#contact" class="cta-button" id="ctaBtn">Получить расчёт сейчас</a>
+    <p>Комплексные решения для закупок в Китае</p>
+</header>
+
+    <!-- 服务流程 -->
+    <section class="service-card">
+        <img src="./zh.svg" alt="选品" class="icon">
+        <div>
+            <h3>Точный подбор товаров</h3>
+            <p>✓ Закупки на 1688/Taobao/Pinduoduo<br>
+                ✓ Профессиональный анализ рынка<br>
+                ✓ Подбор надежных поставщиков</p>
+        </div>
+    </section>
+
+    <section class="service-card">
+        <img src="./yh.svg" alt="验货" class="icon">
+        <div>
+            <h3>Контроль качества</h3>
+            <p>✓ Проверка товара на месте<br>
+                ✓ Профессиональный отчет о качестве<br>
+                ✓ Возврат/замена проблемных товаров</p>
+        </div>
+
+    </section>
+
+    <section class="service-card">
+        <img src="./ys.svg" alt="物流" class="icon">
+        <div>
+            <h3>Международная логистика</h3>
+            <p>✓ Складское хранение<br>
+                ✓ Оптимизация транспортных расходов<br>
+                ✓ Доставка "от двери до двери"</p>
+        </div>
+
+    </section>
+
+    <!-- 联系区块 -->
+    <div id="contact" style="text-align:center; padding:2rem 1rem;">
+        <h2>Начать сотрудничество</h2>
+        <a href="https://wa.me/86123456789" class="contact-badge">
+            <img src="./whatsapp.svg" width="32" alt="WhatsApp">
+            <span>+86 123 4567 8989</span>
+        </a>
+        
+        <a href="tg://resolve?domain=global_sourcing" class="contact-badge">
+            <img src="./telegram.svg" width="32" alt="Telegram">
+            <span>@global_sourcing</span>
+        </a>
+
+        <!-- 新增邮箱联系 -->
+        <a href="mailto:info@globalsourcing.pro" class="contact-badge">
+            <img src="./email.svg" width="32" alt="Email">
+            <span>info@globalsourcing.pro</span>
+        </a>
+
+        <p style="margin-top:1rem;color:#7f8c8d;">Ответ в течение 24 часов | Поддержка на русском и китайском</p>
+    </div>
+
+    <!-- 页脚 -->
+    <footer style="text-align:center; padding:1rem; color:#7f8c8d;">
+        <p> 2025 Yizhuo International Logistics Co., Ltd.<br>
+            г. Иу, провинция Чжэцзян, Китай</p>
+</footer>
+</body>
+
+<script>
+    // 平滑滚动函数
+    function smoothScroll(target) {
+        const targetElement = document.querySelector(target);
+        if (!targetElement) return;
+
+        const targetPosition = targetElement.offsetTop - 50; // 50px偏移
+        const startPosition = window.pageYOffset;
+        const distance = targetPosition - startPosition;
+        const duration = 800;
+        let start = null;
+
+        function step(timestamp) {
+            if (!start) start = timestamp;
+            const progress = timestamp - start;
+            window.scrollTo(0, easeInOutQuad(progress, startPosition, distance, duration));
+            if (progress < duration) window.requestAnimationFrame(step);
+        }
+
+        function easeInOutQuad(t, b, c, d) {
+            t /= d/2;
+            if (t < 1) return c/2*t*t + b;
+            t--;
+            return -c/2 * (t*(t-2) - 1) + b;
+        }
+
+        window.requestAnimationFrame(step);
+    }
+
+    // 绑定点击事件
+    document.getElementById('ctaBtn').addEventListener('click', function(e) {
+        e.preventDefault();
+        smoothScroll(this.getAttribute('href'));
+    });
+</script>
+</body>
+
+</html>
